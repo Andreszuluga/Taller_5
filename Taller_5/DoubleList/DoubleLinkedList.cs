@@ -116,6 +116,94 @@ public class DoubleLinkedList<T> where T : IComparable<T>
             current = current.Next;
         }
     }
+
+    public string ShowModes()
+    {
+        if (_head == null) return "List is empty.";
+
+        var current = _head;
+
+        T currentValue = current.Data!;
+        int currentCount = 1;
+        int maxCount = 1;
+
+        List<T> modes = new List<T>();
+
+        current = current.Next;
+
+        while (current != null)
+        {
+            if (current.Data!.CompareTo(currentValue) == 0)
+            {
+                currentCount++;
+            }
+            else
+            {
+                if (currentCount > maxCount)
+                {
+                    modes.Clear();
+                    modes.Add(currentValue);
+                    maxCount = currentCount;
+                }
+                else if (currentCount == maxCount)
+                {
+                    modes.Add(currentValue);
+                }
+                currentValue = current.Data;
+                currentCount = 1;
+            }
+            current = current.Next;
+        }
+
+        if (currentCount > maxCount)
+        {
+            modes.Clear();
+            modes.Add(currentValue);
+
+        }
+        else if (currentCount == maxCount)
+        {
+            modes.Add(currentValue);
+        }
+
+        return string.Join(", ", modes);
+    }
+
+    public string ShowGraphic()
+    {
+        var current = _head;
+        var result = string.Empty;
+
+        while (current != null)
+        {
+            T value = current.Data!;
+            int count = 0;
+
+            while (current != null && current.Data.CompareTo(value) == 0)
+            {
+                count++;
+
+                current = current.Next;
+            }
+            result += $"{value}: {new string('*', count)}\n";
+        }
+        return result;
+
+    }
+
+    public bool Exist(T data)
+    {
+        var current = _head;
+        while (current != null)
+        {
+            if (current.Data!.CompareTo(data) == 0)
+            {
+                return true;
+            }
+            current = current.Next;
+        }
+        return false;
+    }
 }
 
      

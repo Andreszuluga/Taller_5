@@ -18,14 +18,14 @@ do
             Console.WriteLine(list.ToString());
             break;
         case "3":
-            Console.WriteLine(list.ToStringReverse());
+            Console.WriteLine(list.ToStringReverce());
             break;
         case "4":
             list.SortDescending();
-            Console.WriteLine("List sorted in descending order.");
+            Console.WriteLine("List sorted");
             break;
         case "5":
-            Console.WriteLine($"The mode(s) are: {list.ShowModes()}");
+            Console.WriteLine("Mode(s): " + list.ShowModes());
             break;
         case "6":
             Console.WriteLine(list.ShowGraphic());
@@ -33,13 +33,13 @@ do
         case "7":
             Console.Write("Enter value: ");
             value = Console.ReadLine() ?? string.Empty;
-            Console.WriteLine(list.Exists(value) ? "¡Exists!" : "¡Doesn't exist!");
+            Console.WriteLine(list.Exist(value) ? "Exists" : "Doesn't exist");
             break;
         case "8":
             Console.Write("Enter value: ");
             value = Console.ReadLine() ?? string.Empty;
             list.RemoveOccurrence(value);
-            Console.WriteLine($"Removed one occurrence of {value}.");
+            Console.WriteLine($"Removed occurrence  {value}.");
             break;
         case "9":
             Console.Write("Enter value: ");
@@ -47,7 +47,7 @@ do
             int removed = list.RemoveAllOccurrences(value);
             break;
         case "0":
-            Console.WriteLine("Exiting...");
+            Console.WriteLine("Exit.");
             break;
         default:
             Console.WriteLine("Invalid option. Try again.");
