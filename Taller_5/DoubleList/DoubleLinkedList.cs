@@ -296,6 +296,7 @@ public class DoubleLinkedList<T> where T : IComparable<T>
             current = next;
         }
         return count;
+
     }
 
 }
